@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кенжебек Аяла | Жеке веб-сайт</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #f8fafc;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+
+        /* Навигация (Header) */
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 700;
+            color: #3b82f6;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #475569;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #3b82f6;
+        }
+
+        /* Негізгі баннер (Hero section) */
+        .hero {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .avatar {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            background-color: white;
+            color: #1e3a8a;
+            font-size: 42px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px auto;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .avatar:hover {
+            transform: scale(1.05);
+        }
+
+        .hero h1 {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 20px auto;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            background-color: #ffffff;
+            color: #1e3a8a;
+            padding: 12px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .hero-btn:hover {
+            background-color: #e2e8f0;
+            transform: translateY(-2px);
+        }
+
+        /* Негізгі контент контейнері */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 28px;
+            color: #1e293b;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 60px;
+            height: 4px;
+            background-color: #3b82f6;
+            display: block;
+            margin: 10px auto 0 auto;
+            border-radius: 2px;
+        }
+
+        /* Мен туралы бөлімі */
+        .about-card {
+            background: white;
+            padding: 35px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            margin-bottom: 50px;
+        }
+
+        .about-card p {
+            font-size: 16px;
+            color: #475569;
+            margin-bottom: 15px;
+        }
+
+        .about-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Оқу орны мен бағытым */
+        .edu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+
+        .edu-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+            border-left: 5px solid #3b82f6;
+        }
+
+        .edu-card h3 {
+            font-size: 18px;
+            color: #1e293b;
+            margin-bottom: 8px;
+        }
+
+        .edu-card p {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        /* Дағдылар бөлімі */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+            border-top: 4px solid #3b82f6;
+            font-weight: 600;
+            color: #334155;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Қарапайым студенттік жобалар (Студенттік жұмыстар) */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .project-card h3 {
+            font-size: 18px;
+            color: #1e293b;
+            margin-bottom: 10px;
+        }
+
+        .project-card p {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        /* Байланысу формасы (Сіз ұнатқан қарапайым нұсқа) */
+        .contact-section {
+            background: white;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #334155;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 15px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            border-color: #3b82f6;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #2563eb;
+        }
+
+        /* Футер */
+        footer {
+            text-align: center;
+            padding: 25px;
+            background-color: #0f172a;
+            color: #94a3b8;
+            font-size: 14px;
+            margin-top: 60px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Навигация -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">Кенжебек Аяла</a>
+            <ul class="nav-links">
+                <li><a href="#about">Мен туралы</a></li>
+                <li><a href="#education">Білім</a></li>
+                <li><a href="#skills">Дағдылар</a></li>
+                <li><a href="#projects">Жұмыстарым</a></li>
+                <li><a href="#contact">Байланысу</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Басты шапка (Hero) -->
+    <section class="hero">
+        <div class="avatar">КА</div>
+        <h1>Кенжебек Аяла</h1>
+        <p>IT Студент / Цифрлық білім беру жүйелерін жобалау маманы</p>
+        <a href="#contact" class="hero-btn">Хабарласу</a>
+    </section>
+
+    <div class="container">
+        <!-- Мен туралы -->
+        <section id="about">
+            <h2 class="section-title">Мен туралы</h2>
+            <div class="about-card">
+                <p>
+                    Сәлем! Мен Қазақ ұлттық қыздар педагогикалық университетінің (ЖенПУ) 3-курс студентімін. «Цифрлық білім беру жүйелерін жобалау» (ЦББЖЖ) мамандығы бойынша білім алудамын.
+                </p>
+                <p>
+                    <strong>Мақсатым:</strong> Білім беру саласын заманауи IT технологиялармен интеграциялау, веб-қосымшалар әзірлеу, деректерді өңдеу және 3D графика мүмкіндіктерін зерттеу. Жаңа бағдарламалау тілдерін меңгеріп, практикалық жобалар жасауға әуеспін.
+                </p>
+            </div>
+        </section>
+
+        <!-- Білім және бағыт (Сайт-визитканың маңызды бөлімі) -->
+        <section id="education">
+            <h2 class="section-title">Білімім мен бағытым</h2>
+            <div class="edu-grid">
+                <div class="edu-card">
+                    <h3>Университет</h3>
+                    <p>Қазақ ұлттық қыздар педагогикалық университеті (3-курс студенті)</p>
+                </div>
+                <div class="edu-card">
+                    <h3>Мамандығым</h3>
+                    <p>Цифрлық білім беру жүйелерін жобалау (ЦББЖЖ)</p>
+                </div>
+                <div class="edu-card">
+                    <h3>Қызығушылығым</h3>
+                    <p>Веб-сайттар әзірлеу, IT технологияларды оқу процесіне енгізу, 3D модельдеу</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Дағдылар -->
+        <section id="skills">
+            <h2 class="section-title">Дағдыларым мен технологиялар</h2>
+            <div class="skills-grid">
+                <div class="skill-card">HTML5 & CSS3</div>
+                <div class="skill-card">JavaScript (Негіздері)</div>
+                <div class="skill-card">Python</div>
+                <div class="skill-card">Cisco Packet Tracer</div>
+                <div class="skill-card">3D Animation (Autodesk Maya)</div>
+                <div class="skill-card">Git / GitHub</div>
+            </div>
+        </section>
+
+        <!-- Студенттік жұмыстар (Қарапайым әрі шынайы жобалар) -->
+        <section id="projects">
+            <h2 class="section-title">Студенттік жұмыстарым</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Жеке веб-сайт визитка</h3>
+                    <p>HTML мен CSS тілдерін қолданып жасаған ең алғашқы жеке портфолио веб-сайтым.</p>
+                </div>
+
+                <div class="project-card">
+                    <h3>Оқу макеті (HTML/CSS)</h3>
+                    <p>Сабақ барысында орындалған қарапайым ақпараттық веб-беттің версткасы.</p>
+                </div>
+
+                <div class="project-card">
+                    <h3>3D Модельдеу (Maya)</h3>
+                    <p>Autodesk Maya бағдарламасында сабақ тапсырмасы ретінде жасалған 3D нысандар.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Байланысу формасы (Өзіңіз ұнатқан қарапайым форма) -->
+        <section id="contact">
+            <h2 class="section-title">Байланысу</h2>
+            <div class="contact-section">
+                <form onsubmit="alert('Рақмет! Сіздің мәліметтеріңіз жіберілді.'); return false;">
+                    <div class="form-group">
+                        <label for="name">Аты-жөніңіз:</label>
+                        <input type="text" id="name" placeholder="Атыңызды енгізіңіз" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Телефон нөміріңіз:</label>
+                        <input type="tel" id="phone" placeholder="+7 (___) ___-__-__" required>
+                    </div>
+                    <button type="submit" class="submit-btn">Жіберу</button>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <!-- Футер -->
+    <footer>
+        &copy; 2026 Кенжебек Аяла. Барлық құқықтар қорғалған.
+    </footer>
+
+</body>
+</html>
